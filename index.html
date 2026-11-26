@@ -33,7 +33,7 @@
 /* modal & toasts */
 .modal-backdrop{position:fixed;inset:0;background:rgba(49,37,27,.34);backdrop-filter:blur(5px);z-index:80;display:none;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s}.modal-backdrop.show{display:flex}@keyframes fadeIn{from{opacity:0}to{opacity:1}}.modal{width:min(100%,510px);max-height:min(90vh,800px);overflow:auto;background:#fffcf7;border:1px solid #e5dacb;border-radius:18px;box-shadow:0 24px 80px rgba(45,31,19,.2);padding:26px;animation:modalIn .28s cubic-bezier(.2,.8,.2,1)}@keyframes modalIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}.modal-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:21px}.modal-title{font-family:var(--serif);font-size:29px;font-weight:600;color:#5d4836;line-height:1}.modal-sub{font-size:11px;color:#a09180;margin-top:6px}.close-modal{border:0;background:#f1e9de;color:#80684f;width:30px;height:30px;border-radius:50%;display:grid;place-items:center}.close-modal svg{width:15px;height:15px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:10px;letter-spacing:.4px;color:#887662;font-weight:600}.field input,.field textarea,.field select{width:100%;border:1px solid #e8dfd3;background:#fffefa;border-radius:9px;padding:11px 12px;font-size:11px;color:#564434;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:#b99a78;box-shadow:0 0 0 3px #b99a781a}.field textarea{min-height:75px;resize:vertical}.cover-upload{display:flex;align-items:center;gap:13px;padding:11px;border:1px dashed #d9c9b4;border-radius:10px;background:#faf6ef}.cover-preview{width:43px;height:59px;border-radius:3px 6px 6px 3px;background:linear-gradient(145deg,#806349,#b39978);display:grid;place-items:center;color:#f6ead9;overflow:hidden;flex-shrink:0}.cover-preview img{width:100%;height:100%;object-fit:cover}.cover-upload-copy{font-size:10px;color:#8e7a64}.cover-upload-copy strong{display:block;color:#6f543c;font-size:11px;margin-bottom:3px}.file-btn{display:inline-block;margin-top:5px;color:#8b6c4c;font-weight:600;cursor:pointer}.file-btn input{display:none}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:22px}.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:100;background:#5e4937;color:#fff9f0;border-radius:30px;padding:11px 17px;font-size:11px;box-shadow:0 9px 24px #3c2b1c2b;transition:.28s}.toast.show{opacity:1;transform:translate(-50%,0)}.context-menu{position:fixed;z-index:90;background:#fffdf9;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:5px;min-width:150px;display:none}.context-menu.show{display:block;animation:fadeUp .15s}.context-menu button{display:flex;align-items:center;gap:8px;width:100%;border:0;border-radius:7px;background:transparent;color:#78634d;text-align:left;padding:9px 10px;font-size:11px}.context-menu button:hover{background:#f2eadf}.context-menu button.danger{color:#a56d5e}.context-menu svg{width:14px;height:14px}
 /* print */
-@media print{body{background:white}.sidebar,.topbar,.editor-toolbar,.editor-sidebar,.workspace-top,.editor-footer,.paper-topline,.paper-running-title,.paper-footer-line,.paper-bottom-note,.paper-chapter-kicker{display:none!important}.main{margin:0;width:100%}.content{padding:0}.editor-view{margin:0;background:white}.editor-layout{display:block}.editor-workspace{padding:0}.workspace-paper{max-width:none;min-height:0;box-shadow:none;border:0;padding:55px 75px;background:#fffdf6!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.workspace-paper:before{display:none}.manuscript{min-height:0}.paper-page-number{position:static;margin-top:35px}.chapter-title-input{font-size:30px}.manuscript .page-break{page-break-before:always;border:0;margin:0}.manuscript .page-break:after{display:none}}
+@media print{body{background:white}.sidebar,.topbar,.editor-toolbar,.editor-sidebar,.workspace-top,.page-navigation,.editor-footer,.paper-topline,.paper-running-title,.paper-footer-line,.paper-bottom-note,.paper-chapter-kicker{display:none!important}.main{margin:0;width:100%}.content{padding:0}.editor-view{margin:0;background:white}.editor-layout{display:block}.editor-workspace{padding:0}.workspace-paper{max-width:none;min-height:0;box-shadow:none;border:0;padding:55px 75px;background:#fffdf6!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.workspace-paper:before{display:none}.manuscript{min-height:0}.paper-page-number{position:static;margin-top:35px}.chapter-title-input{font-size:30px}.manuscript .page-break{page-break-before:always;border:0;margin:0}.manuscript .page-break:after{display:none}}
 @media(max-width:1150px){.book-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.content{padding-left:30px;padding-right:30px}.topbar{padding:0 30px}.editor-view{margin-left:-30px;margin-right:-30px}.editor-toolbar{padding:0 17px}.editor-layout{grid-template-columns:220px minmax(0,1fr)}}
 @media(max-width:850px){.sidebar{transform:translateX(-100%);box-shadow:10px 0 30px rgba(44,32,21,.1)}.sidebar.open{transform:translateX(0)}.main{margin-left:0;width:100%}.mobile-menu{display:grid;place-items:center}.topbar{height:67px;padding:0 20px}.content{padding:25px 20px 55px}.editor-view{margin:-25px -20px -55px}.editor-toolbar{top:67px}.welcome-art{margin-right:5px}.editor-layout{grid-template-columns:190px minmax(0,1fr)}.editor-sidebar{padding:18px 11px}.editor-workspace{padding:25px 16px 45px}.workspace-paper{min-height:820px;padding:82px 52px 75px}.paper-topline{left:52px;right:52px}.paper-running-title{right:52px}.paper-bottom-note{right:52px}.workspace-paper:before{left:22px}}
 @media(max-width:620px){.topbar{padding:0 15px}.topbar-title{font-size:17px}.save-indicator{font-size:0;gap:0}.save-dot{width:7px;height:7px}.content{padding:19px 14px 42px}.welcome{min-height:195px;padding:25px 22px}.welcome h1{font-size:35px}.welcome p{font-size:11px;max-width:250px}.welcome-art{width:92px;height:120px;margin-right:-8px}.book-illustration{transform:scale(.78) rotate(-7deg)}.small-leaf{display:none}.stats-grid{gap:8px}.stat-card{padding:11px 9px;gap:8px}.stat-icon{width:30px;height:30px}.stat-number{font-size:21px}.stat-label{font-size:9px}.section-title{font-size:24px}.book-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:19px 13px}.book-title{font-size:17px}.library-toolbar{align-items:stretch}.searchbox{max-width:none;min-width:100%;order:-1}.editor-view{margin:-19px -14px -42px}.editor-toolbar{height:auto;min-height:61px;padding:9px 12px;gap:6px;top:67px;flex-wrap:wrap}.editor-book-info{min-width:0;flex:1}.editor-book-title{max-width:125px;font-size:16px}.editor-tools{order:3;width:100%;justify-content:flex-start;border-top:1px solid #eee6dc;padding-top:7px}.editor-right .btn{padding:7px 9px}.editor-layout{display:block}.editor-sidebar{border-right:0;border-bottom:1px solid #e3dace;padding:10px 12px}.editor-back{padding:2px 4px 9px}.editor-side-tabs{margin-bottom:9px}.chapter-list{display:flex;overflow:auto;gap:5px;padding-bottom:3px}.chapter-item{white-space:nowrap;min-width:115px;padding:8px}.sidebar-spacer,.writing-tip{display:none}.editor-workspace{padding:19px 9px 35px}.workspace-top{padding:0 5px}.workspace-paper{min-height:750px;padding:68px 31px 70px}.workspace-paper:before{left:14px}.paper-topline{top:35px;left:31px;right:31px}.paper-running-title{top:19px;right:31px;font-size:8px}.chapter-title-input{font-size:29px;margin-bottom:32px}.manuscript{font-size:15px;line-height:1.75;min-height:560px}.paper-footer-line{left:31px;right:31px;bottom:50px}.paper-page-number{bottom:27px}.paper-bottom-note{right:31px;bottom:16px;font-size:7px}.goal-panel{padding:20px;align-items:flex-start;flex-direction:column}.goal-form{width:100%}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.modal{padding:21px}.workspace-stats{gap:8px}.tool-select{max-width:107px}.editor-book-sub{font-size:8px}}
@@ -65,6 +65,68 @@
   .paper-footer-line{left:30px;right:30px;bottom:42px}
   .paper-page-number{bottom:19px}
   .paper-bottom-note{right:30px;bottom:11px}
+}
+
+
+/* Meu Livro 1.1 — páginas fixas e navegação do manuscrito */
+.workspace-paper{
+  width:min(100%,620px);
+  aspect-ratio:0.707 / 1;
+  height:auto;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  padding:clamp(58px,7vw,88px) clamp(30px,7vw,78px) 76px;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+.workspace-paper:before{pointer-events:none}
+.paper-chapter-kicker,.chapter-title-input{flex:0 0 auto}
+.chapter-title-input{min-height:1.1em}
+.manuscript{
+  flex:1 1 auto;
+  min-height:0;
+  height:auto;
+  flex:1 1 0;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:#c8b69d transparent;
+  padding-right:3px;
+}
+.manuscript::-webkit-scrollbar{width:4px}
+.manuscript::-webkit-scrollbar-thumb{background:#c8b69d;border-radius:8px}
+.manuscript::-webkit-scrollbar-track{background:transparent}
+.page-navigation{
+  max-width:620px;margin:16px auto 0;display:flex;align-items:center;justify-content:center;gap:10px;
+  color:#917d67;font-size:11px;
+}
+.page-navigation .page-arrow,.page-navigation .add-page-action{
+  min-height:36px;border:1px solid #e4d8c8;border-radius:10px;background:#fbf8f2;color:#765b40;
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:0 12px;transition:background .2s,transform .2s,border-color .2s,opacity .2s;
+}
+.page-navigation .page-arrow{width:38px;padding:0}
+.page-navigation .page-arrow svg,.page-navigation .add-page-action svg{width:15px;height:15px}
+.page-navigation button:not(:disabled):hover{background:#eee4d7;border-color:#d8c8b4;transform:translateY(-1px)}
+.page-navigation button:disabled{opacity:.35;cursor:not-allowed}
+.page-counter{min-width:104px;text-align:center;font-variant-numeric:tabular-nums;letter-spacing:.25px}
+.add-page-action{font-weight:600}
+.workspace-paper.page-switch{animation:pageAppear .22s ease}
+@keyframes pageAppear{from{opacity:.78;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.chapter-title-input.is-hidden,.paper-chapter-kicker.is-hidden{display:none}
+@media(max-width:850px){
+  .workspace-paper{width:100%;aspect-ratio:0.707 / 1;height:auto;min-height:0;padding:64px 38px 65px}
+  .manuscript{min-height:0;font-size:14px;line-height:1.65}
+  .chapter-title-input{font-size:clamp(22px,4vw,29px);margin-bottom:25px}
+}
+@media(max-width:620px){
+  .workspace-paper{width:100%;aspect-ratio:0.707 / 1;height:auto;min-height:0;padding:57px 30px 58px}
+  .manuscript{font-size:13px;line-height:1.6}
+  .chapter-title-input{font-size:25px;margin-bottom:22px}
+  .page-navigation{gap:7px;margin-top:12px;flex-wrap:wrap}
+  .page-navigation .page-arrow{width:36px;min-height:34px}
+  .page-navigation .add-page-action{min-height:34px;padding:0 10px;font-size:10px}
+  .page-counter{min-width:91px;font-size:10px}
 }
 
 </style>
@@ -136,7 +198,6 @@
             <button class="tool-btn" data-command="justifyLeft" title="Alinhar à esquerda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></svg></button>
             <button class="tool-btn" data-command="justifyCenter" title="Centralizar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M7 10h10M4 14h16M7 18h10"/></svg></button>
             <button class="tool-btn" id="insertQuote" title="Inserir citação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11H5.5A2.5 2.5 0 0 1 3 8.5v-1A2.5 2.5 0 0 1 5.5 5H10v7a6 6 0 0 1-6 6M21 11h-3.5A2.5 2.5 0 0 1 15 8.5v-1A2.5 2.5 0 0 1 17.5 5H22v7a6 6 0 0 1-6 6"/></svg></button>
-            <button class="tool-btn" id="insertPageBreak" title="Nova página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h14v5H5zM5 15h14v5H5zM5 12h14" stroke-dasharray="2 2"/></svg></button>
           </div>
           <div class="editor-right"><div class="save-indicator" id="editorSave"><span class="save-dot"></span><span>Salvo</span></div><button class="btn btn-secondary" id="exportBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3"/></svg>Exportar</button></div>
         </div>
@@ -156,6 +217,12 @@
               <div class="manuscript" id="manuscript" contenteditable="true" spellcheck="true" data-placeholder="Era uma vez...\n\nComece a escrever sua história aqui. Cada palavra é um novo caminho."></div>
               <div class="paper-footer-line"></div><div class="paper-page-number" id="pageNumber">1</div><div class="paper-bottom-note">MEU LIVRO · MANUSCRITO</div>
             </article>
+            <div class="page-navigation" aria-label="Navegação entre páginas">
+              <button class="page-arrow" id="prevPage" type="button" aria-label="Página anterior" title="Página anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m15 18-6-6 6-6"/></svg></button>
+              <span class="page-counter" id="pageCounter" aria-live="polite">Página 1 de 1</span>
+              <button class="page-arrow" id="nextPage" type="button" aria-label="Próxima página" title="Próxima página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m9 18 6-6-6-6"/></svg></button>
+              <button class="add-page-action" id="addPageBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 5v14M5 12h14"/></svg>Adicionar página</button>
+            </div>
             <div class="editor-footer"><span>Seu espaço de criação</span><span>As alterações são salvas automaticamente</span></div>
           </section>
         </div>
@@ -185,9 +252,9 @@
   const uid = () => 'b' + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
   const escapeHTML = (s='') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const plainText = html => { const d=document.createElement('div'); d.innerHTML=html||''; return (d.textContent||d.innerText||'').replace(/\u00a0/g,' ').trim(); };
-  const wordTotal = book => (book.chapters||[]).reduce((n,c)=>n+((plainText(c.content).match(/\b[\p{L}\p{N}'’-]+\b/gu)||[]).length),0);
+  const wordTotal = book => (book.chapters||[]).reduce((n,c)=>{const chunks=Array.isArray(c.pages)?c.pages.map(p=>p.content||''):[c.content||''];return n+chunks.reduce((sum,html)=>sum+((plainText(html).match(/\b[\p{L}\p{N}'’-]+\b/gu)||[]).length),0)},0);
   const fmt = n => Number(n||0).toLocaleString('pt-BR');
-  let books = loadBooks(), activeBookId = null, activeChapterId = null, activePanel = 'chapters', filter = 'all', menuBookId = null, coverData = '', modalEditId = null, saveTimer = null, toastTimer = null;
+  let books = loadBooks(), activeBookId = null, activeChapterId = null, activePageIndex = 0, activePanel = 'chapters', filter = 'all', menuBookId = null, coverData = '', modalEditId = null, saveTimer = null, toastTimer = null;
   let prefs = (()=>{try{return JSON.parse(localStorage.getItem(PREF_KEY)||'{}')}catch{return {}}})();
   let dailyGoal = Number(prefs.dailyGoal)||500;
   let todaySessions = Number(prefs.todayWords)||0;
@@ -224,28 +291,94 @@
   function openCreateModal(editId=null){modalEditId=editId;coverData='';const book=editId?books.find(b=>b.id===editId):null;$('#modalTitle').textContent=book?'Editar seu livro':'Uma nova história';$('.modal-sub').textContent=book?'Ajuste os detalhes do seu projeto.':'Dê um nome ao mundo que você está prestes a criar.';$('#bookTitleInput').value=book?.title||'';$('#bookAuthorInput').value=book?.author||'';$('#bookGenreInput').value=book?.genre||'Romance';$('#bookSynopsisInput').value=book?.synopsis||'';coverData=book?.cover||'';$('#coverPreview').innerHTML=coverData?`<img src="${coverData}" alt="Prévia da capa">`:'<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3h11l3 3v15H5zM16 3v4h3M8 12h8M8 16h8"/></svg>';$('#createBookBtn').innerHTML=book?'Salvar alterações':'Criar meu livro <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>';$('#coverFile').value='';$('#bookModal').classList.add('show');setTimeout(()=>$('#bookTitleInput').focus(),100)}
   function closeModal(){$('#bookModal').classList.remove('show')}
   function compressImage(file){return new Promise((resolve,reject)=>{if(!file||!file.type.startsWith('image/'))return reject(new Error('Selecione uma imagem válida.'));const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{const max=900,scale=Math.min(1,max/Math.max(img.width,img.height));const canvas=document.createElement('canvas');canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0,canvas.width,canvas.height);resolve(canvas.toDataURL('image/jpeg',.78))};img.onerror=()=>reject(new Error('Não foi possível abrir a imagem.'));img.src=reader.result};reader.onerror=()=>reject(new Error('Falha ao ler a imagem.'));reader.readAsDataURL(file)})}
-  function handleBookForm(e){e.preventDefault();const title=$('#bookTitleInput').value.trim();if(!title){$('#bookTitleInput').focus();return}if(modalEditId){const b=books.find(x=>x.id===modalEditId);if(!b)return;b.title=title;b.author=$('#bookAuthorInput').value.trim();b.genre=$('#bookGenreInput').value;b.synopsis=$('#bookSynopsisInput').value.trim();if(coverData)b.cover=coverData;b.updatedAt=Date.now();toast('Informações atualizadas.')}else{const b={id:uid(),title,author:$('#bookAuthorInput').value.trim(),genre:$('#bookGenreInput').value,synopsis:$('#bookSynopsisInput').value.trim(),cover:coverData,coverColor:['#80654c','#8b7666','#687668','#8a665d','#6d7180','#987e64'][books.length%6],ornament:['✳','❧','✦','❦','✺','✧'][books.length%6],status:'writing',createdAt:Date.now(),updatedAt:Date.now(),chapters:[{id:uid(),title:'',content:''}],characters:[],notes:[],goal:0};books.unshift(b);activeBookId=b.id;activeChapterId=b.chapters[0].id;}
+  function handleBookForm(e){e.preventDefault();const title=$('#bookTitleInput').value.trim();if(!title){$('#bookTitleInput').focus();return}if(modalEditId){const b=books.find(x=>x.id===modalEditId);if(!b)return;b.title=title;b.author=$('#bookAuthorInput').value.trim();b.genre=$('#bookGenreInput').value;b.synopsis=$('#bookSynopsisInput').value.trim();if(coverData)b.cover=coverData;b.updatedAt=Date.now();toast('Informações atualizadas.')}else{const b={id:uid(),title,author:$('#bookAuthorInput').value.trim(),genre:$('#bookGenreInput').value,synopsis:$('#bookSynopsisInput').value.trim(),cover:coverData,coverColor:['#80654c','#8b7666','#687668','#8a665d','#6d7180','#987e64'][books.length%6],ornament:['✳','❧','✦','❦','✺','✧'][books.length%6],status:'writing',createdAt:Date.now(),updatedAt:Date.now(),chapters:[{id:uid(),title:'',content:'',pages:[{id:uid(),content:''}]}],characters:[],notes:[],goal:0};books.unshift(b);activeBookId=b.id;activeChapterId=b.chapters[0].id;}
     persist();closeModal();render();if(!modalEditId)openBook(activeBookId);else{if(activeBookId===modalEditId)refreshEditorHeader();toast('Projeto atualizado com carinho.')}
   }
   function showBookMenu(id,anchor){menuBookId=id;const m=$('#bookContext');const r=anchor.getBoundingClientRect();m.style.left=Math.max(10,Math.min(window.innerWidth-165,r.right-150))+'px';m.style.top=Math.min(window.innerHeight-220,r.bottom+6)+'px';m.classList.add('show')}
   function hideBookMenu(){$('#bookContext').classList.remove('show')}
   function menuAction(action){const b=books.find(x=>x.id===menuBookId);hideBookMenu();if(!b)return;if(action==='open')openBook(b.id);if(action==='complete'){b.status=b.status==='completed'?'writing':'completed';b.updatedAt=Date.now();persist();render();toast(b.status==='completed'?'Livro marcado como concluído.':'Livro voltou para andamento.')}if(action==='archive'){const restoring=b.status==='archived';b.status=restoring?'writing':'archived';b.updatedAt=Date.now();persist();render();toast(restoring?'Projeto restaurado para a estante.':'Projeto enviado para o arquivo.')}if(action==='edit')openCreateModal(b.id);if(action==='delete'){if(confirm(`Excluir “${b.title}”? Esta ação não poderá ser desfeita.`)){books=books.filter(x=>x.id!==b.id);if(activeBookId===b.id){activeBookId=null;activeChapterId=null;navigate('library')}persist();render();toast('Projeto excluído.')}}}
-  function openBook(id){const b=books.find(x=>x.id===id);if(!b)return;if(b.status==='archived'){b.status='writing'}activeBookId=id;activeChapterId=b.chapters?.[0]?.id||null;if(!b.chapters?.length)b.chapters=[{id:uid(),title:'',content:''}];activePanel='chapters';refreshEditorHeader();renderSidePanel();loadChapter();navigate('editor');$('#topEyebrow').textContent='SEU MANUSCRITO';$('#topTitle').textContent=b.title;persist()}
+  function openBook(id){const b=books.find(x=>x.id===id);if(!b)return;if(b.status==='archived'){b.status='writing'}activeBookId=id;if(!b.chapters?.length)b.chapters=[{id:uid(),title:'',content:'',pages:[{id:uid(),content:''}]}];ensureBookPages(b);activeChapterId=b.chapters[0].id;activePageIndex=0;activePanel='chapters';refreshEditorHeader();renderSidePanel();loadChapter();navigate('editor');$('#topEyebrow').textContent='SEU MANUSCRITO';$('#topTitle').textContent=b.title;persist()}
   function refreshEditorHeader(){const b=currentBook();if(!b)return;$('#editorBookTitle').textContent=b.title;$('#editorBookAuthor').textContent=b.author||b.genre||'Manuscrito';$('#runningTitle').textContent=b.title.toLocaleUpperCase('pt-BR');$('#miniCover').style.background=b.cover?`center/cover url("${b.cover}")`:b.coverColor||'#80654c';$('#miniCover').style.backgroundSize='cover';if($('#view-editor').classList.contains('active'))$('#topTitle').textContent=b.title;}
   function refreshChapterList(){const b=currentBook();if(!b)return;const box=$('#sidePanel');box.innerHTML=`<div class="side-section-title"><span>SEU MANUSCRITO</span><button class="tiny-add" id="addChapter" title="Adicionar capítulo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="chapter-list" id="chapterList"></div>`;const list=$('#chapterList');b.chapters.forEach((c,i)=>{const el=document.createElement('button');el.className='chapter-item'+(c.id===activeChapterId?' active':'');el.innerHTML=`<span class="chapter-num">${String(i+1).padStart(2,'0')}</span><span class="chapter-name">${escapeHTML(c.title||'Sem título')}</span>`;el.addEventListener('click',()=>switchChapter(c.id));list.append(el)});$('#addChapter').addEventListener('click',addChapter)}
   function renderSidePanel(){const b=currentBook();if(!b)return;$$('.side-tab').forEach(t=>t.classList.toggle('active',t.dataset.panel===activePanel));if(activePanel==='chapters'){refreshChapterList();return}const box=$('#sidePanel');if(activePanel==='characters'){box.innerHTML=`<div class="side-section-title"><span>PERSONAGENS</span><button class="tiny-add" id="addCharacter" title="Novo personagem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button></div><div id="characterEntries"></div><div class="editor-empty-tool">Crie fichas para guardar nomes, personalidades e detalhes dos personagens.</div>`;$('#addCharacter').onclick=addCharacter;const entries=$('#characterEntries');(b.characters||[]).forEach((c,i)=>{const el=document.createElement('div');el.className='tool-entry';el.innerHTML=`<strong>${escapeHTML(c.name)}</strong><p>${escapeHTML(c.description||'Sem descrição')}</p>`;entries.append(el)})}else{box.innerHTML=`<div class="side-section-title"><span>ANOTAÇÕES</span><button class="tiny-add" id="addNote" title="Nova anotação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></button></div><div id="noteEntries"></div><div class="editor-empty-tool">Guarde ideias soltas, cenas futuras e frases que não quer perder.</div>`;$('#addNote').onclick=addNote;const entries=$('#noteEntries');(b.notes||[]).forEach(n=>{const el=document.createElement('div');el.className='tool-entry';el.innerHTML=`<strong>${escapeHTML(n.title||'Anotação')}</strong><p>${escapeHTML(n.text||'')}</p>`;entries.append(el)})}}
-  function switchChapter(id){saveCurrentChapter(false);activeChapterId=id;renderSidePanel();loadChapter()}
-  function loadChapter(){const b=currentBook(),c=currentChapter();if(!b||!c)return;$('#chapterTitle').value=c.title||'';$('#manuscript').innerHTML=c.content||'';$('#chapterLocation').textContent='CAPÍTULO '+String(b.chapters.findIndex(x=>x.id===c.id)+1).padStart(2,'0');$('#chapterKicker').textContent='CAPÍTULO '+toRoman(b.chapters.findIndex(x=>x.id===c.id)+1);$('#pageNumber').textContent=String(b.chapters.slice(0,b.chapters.findIndex(x=>x.id===c.id)).reduce((n,x)=>n+estimatePages(x.content),0)+1);updateWordCount();$('#manuscript').style.fontFamily=$('#fontSelect').value+', Georgia, serif';$('#manuscript').style.fontSize=$('#fontSize').value+'px';}
+  function switchChapter(id){saveCurrentChapter(false);persist();activeChapterId=id;activePageIndex=0;renderSidePanel();loadChapter(true)}
+  function ensureChapterPages(chapter){
+    if(!Array.isArray(chapter.pages)||!chapter.pages.length){chapter.pages=[{id:uid(),content:chapter.content||''}]}
+    chapter.pages=chapter.pages.map(page=>({id:page.id||uid(),content:typeof page.content==='string'?page.content:''}));
+    return chapter.pages;
+  }
+  function ensureBookPages(book){(book.chapters||[]).forEach(ensureChapterPages)}
+  function allBookPages(book=currentBook()){
+    if(!book)return [];
+    ensureBookPages(book);
+    return book.chapters.flatMap((chapter,chapterIndex)=>chapter.pages.map((page,pageIndex)=>({chapterId:chapter.id,chapterIndex,pageIndex})));
+  }
+  function currentBookPagePosition(){
+    const pages=allBookPages(),pos=pages.findIndex(page=>page.chapterId===activeChapterId&&page.pageIndex===activePageIndex);
+    return {pages,pos:Math.max(0,pos)};
+  }
+  function refreshPageNavigation(){
+    const {pages,pos}=currentBookPagePosition(),prev=$('#prevPage'),next=$('#nextPage');
+    $('#pageCounter').textContent=`Página ${pos+1} de ${Math.max(1,pages.length)}`;
+    prev.disabled=pos<=0;next.disabled=pos>=pages.length-1;
+    $('#pageNumber').textContent=String(pos+1);
+  }
+  function loadChapter(animate=true){
+    const b=currentBook(),c=currentChapter();if(!b||!c)return;
+    ensureChapterPages(c);activePageIndex=Math.max(0,Math.min(activePageIndex,c.pages.length-1));
+    const chapterIndex=b.chapters.findIndex(x=>x.id===c.id),isFirstPage=activePageIndex===0;
+    $('#chapterTitle').value=c.title||'';
+    $('#chapterTitle').classList.toggle('is-hidden',!isFirstPage);
+    $('#chapterKicker').classList.toggle('is-hidden',!isFirstPage);
+    $('#manuscript').innerHTML=c.pages[activePageIndex]?.content||'';
+    $('#chapterLocation').textContent='CAPÍTULO '+String(chapterIndex+1).padStart(2,'0');
+    $('#chapterKicker').textContent='CAPÍTULO '+toRoman(chapterIndex+1);
+    $('#manuscript').style.fontFamily=$('#fontSelect').value+', Georgia, serif';
+    $('#manuscript').style.fontSize=$('#fontSize').value+'px';
+    refreshPageNavigation();updateWordCount();
+    if(animate){const paper=$('#paper');paper.classList.remove('page-switch');void paper.offsetWidth;paper.classList.add('page-switch')}
+  }
   function toRoman(num){const vals=[[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];let s='';for(const [v,l] of vals){while(num>=v){s+=l;num-=v}}return s}
   function estimatePages(html){const text=plainText(html);if(!text)return 0;return Math.max(1,Math.ceil(text.length/1850))}
-  function saveCurrentChapter(showState=true){const c=currentChapter(),b=currentBook();if(!c||!b)return;c.title=$('#chapterTitle').value;c.content=$('#manuscript').innerHTML;b.updatedAt=Date.now();if(showState)setSaveState('saving');clearTimeout(saveTimer);saveTimer=setTimeout(()=>{persist();if(showState)render()},350);}
-  function queueSave(){setSaveState('saving');clearTimeout(saveTimer);saveTimer=setTimeout(()=>{saveCurrentChapter(false);persist();render()},500)}
-  function updateWordCount(){const txt=plainText($('#manuscript').innerHTML);const words=(txt.match(/\b[\p{L}\p{N}'’-]+\b/gu)||[]).length;$('#wordCount').textContent=fmt(words)+' palavras';$('#charCount').textContent=fmt(txt.length)+' caracteres';const b=currentBook(),c=currentChapter();if(b&&c){const chaptersBefore=b.chapters.slice(0,b.chapters.findIndex(x=>x.id===c.id));const page=chaptersBefore.reduce((n,x)=>n+estimatePages(x.content),0)+Math.max(1,estimatePages($('#manuscript').innerHTML));$('#pageNumber').textContent=String(page)}}
-  function addChapter(){const b=currentBook();if(!b)return;saveCurrentChapter(false);const c={id:uid(),title:'',content:''};b.chapters.push(c);activeChapterId=c.id;persist();renderSidePanel();loadChapter();$('#chapterTitle').focus();toast('Novo capítulo criado.')}
+  function syncCurrentChapter(){
+    const c=currentChapter();if(!c)return;
+    ensureChapterPages(c);
+    c.title=$('#chapterTitle').value||c.title||'';
+    c.pages[activePageIndex].content=$('#manuscript').innerHTML;
+    c.content=c.pages.map(page=>page.content||'').join('<div class="page-break"></div>');
+    const b=currentBook();if(b)b.updatedAt=Date.now();
+  }
+  function saveCurrentChapter(showState=true){
+    const c=currentChapter(),b=currentBook();if(!c||!b)return;
+    syncCurrentChapter();if(showState)setSaveState('saving');clearTimeout(saveTimer);
+    saveTimer=setTimeout(()=>{persist();if(showState)render()},350);
+  }
+  function queueSave(){setSaveState('saving');clearTimeout(saveTimer);saveTimer=setTimeout(()=>{syncCurrentChapter();persist();render()},500)}
+  function updateWordCount(){
+    const html=$('#manuscript').innerHTML,txt=plainText(html);
+    const words=(txt.match(/\b[\p{L}\p{N}'’-]+\b/gu)||[]).length;
+    $('#wordCount').textContent=fmt(words)+' palavras';$('#charCount').textContent=fmt(txt.length)+' caracteres';
+    refreshPageNavigation();
+  }
+  function navigatePage(direction){
+    const b=currentBook();if(!b)return;
+    syncCurrentChapter();const pages=allBookPages(b),position=pages.findIndex(page=>page.chapterId===activeChapterId&&page.pageIndex===activePageIndex);
+    const target=pages[position+direction];if(!target){persist();return}
+    clearTimeout(saveTimer);persist();activeChapterId=target.chapterId;activePageIndex=target.pageIndex;
+    if(target.chapterId!==pages[position]?.chapterId)renderSidePanel();
+    loadChapter(true);
+  }
+  function addPage(){
+    const b=currentBook(),c=currentChapter();if(!b||!c)return;
+    syncCurrentChapter();ensureChapterPages(c);
+    const page={id:uid(),content:''};c.pages.splice(activePageIndex+1,0,page);activePageIndex+=1;
+    clearTimeout(saveTimer);persist();loadChapter(true);refreshPageNavigation();$('#manuscript').focus();toast('Nova página adicionada.');
+  }
+  function addChapter(){const b=currentBook();if(!b)return;saveCurrentChapter(false);const c={id:uid(),title:'',content:'',pages:[{id:uid(),content:''}]};b.chapters.push(c);activeChapterId=c.id;activePageIndex=0;persist();renderSidePanel();loadChapter(true);$('#chapterTitle').focus();toast('Novo capítulo criado.')}
   function addCharacter(){const name=prompt('Nome do personagem:');if(!name?.trim())return;const description=prompt('Personalidade, aparência ou história (opcional):')||'';const b=currentBook();b.characters=b.characters||[];b.characters.push({id:uid(),name:name.trim(),description});b.updatedAt=Date.now();persist();renderSidePanel();toast('Personagem adicionado.')}
   function addNote(){const title=prompt('Título da anotação:')||'Nova ideia';const text=prompt('Escreva sua anotação:');if(text===null)return;const b=currentBook();b.notes=b.notes||[];b.notes.unshift({id:uid(),title:title.trim(),text:text.trim()});b.updatedAt=Date.now();persist();renderSidePanel();toast('Anotação guardada.')}
   function insertAtCursor(html){$('#manuscript').focus();document.execCommand('insertHTML',false,html);queueSave();updateWordCount()}
-  function exportBook(){const b=currentBook();if(!b)return;saveCurrentChapter(false);persist();const htmlDoc=`<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>${escapeHTML(b.title)}</title><style>body{font-family:Georgia,serif;color:#302820;max-width:760px;margin:60px auto;line-height:1.8;padding:0 40px}h1{font-family:Georgia,serif;font-weight:normal;text-align:center;margin:70px 0 20px}h2{font-weight:normal;text-align:center;margin:70px 0 35px;page-break-before:always}p{text-indent:2em;margin:0 0 .7em}blockquote{margin:1.5em 2em;font-style:italic;color:#695845;border-left:1px solid #a99478;padding-left:17px}@media print{body{margin:0 auto}}</style></head><body><h1>${escapeHTML(b.title)}</h1><p style="text-align:center;text-indent:0">${escapeHTML(b.author||'')}</p>${b.chapters.map((c,i)=>`<h2>Capítulo ${i+1}${c.title?' — '+escapeHTML(c.title):''}</h2>${c.content||''}`).join('')}</body></html>`;const blob=new Blob([htmlDoc],{type:'text/html;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=(b.title||'meu-livro').replace(/[\\/:*?"<>|]/g,'-')+'.html';a.click();URL.revokeObjectURL(url);toast('Manuscrito exportado em HTML. Abra e imprima em PDF pelo navegador.')}
+  function exportBook(){const b=currentBook();if(!b)return;saveCurrentChapter(false);persist();const htmlDoc=`<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>${escapeHTML(b.title)}</title><style>body{font-family:Georgia,serif;color:#302820;max-width:760px;margin:60px auto;line-height:1.8;padding:0 40px}h1{font-family:Georgia,serif;font-weight:normal;text-align:center;margin:70px 0 20px}h2{font-weight:normal;text-align:center;margin:70px 0 35px;page-break-before:always}.print-page{page-break-after:always;min-height:220mm}p{text-indent:2em;margin:0 0 .7em}blockquote{margin:1.5em 2em;font-style:italic;color:#695845;border-left:1px solid #a99478;padding-left:17px}@media print{body{margin:0 auto}}</style></head><body><h1>${escapeHTML(b.title)}</h1><p style="text-align:center;text-indent:0">${escapeHTML(b.author||'')}</p>${b.chapters.map((c,i)=>{const pages=ensureChapterPages(c);return pages.map((page,j)=>`${j===0?`<h2>Capítulo ${i+1}${c.title?' — '+escapeHTML(c.title):''}</h2>`:''}<section class="print-page">${page.content||''}</section>`).join('')}).join('')}</body></html>`;const blob=new Blob([htmlDoc],{type:'text/html;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=(b.title||'meu-livro').replace(/[\\/:*?"<>|]/g,'-')+'.html';a.click();URL.revokeObjectURL(url);toast('Manuscrito exportado em HTML. Abra e imprima em PDF pelo navegador.')}
   // Navigation and general actions
   $$('.nav-item').forEach(btn=>btn.addEventListener('click',()=>{if(btn.dataset.action==='new')openCreateModal();else navigate(btn.dataset.view)}));$('#topNew').onclick=openCreateModal;$('#welcomeNew').onclick=openCreateModal;$$('[data-goto]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.goto)));$('#mobileMenu').onclick=()=>$('#sidebar').classList.toggle('open');$('#backToShelf').onclick=()=>{saveCurrentChapter(false);persist();render();navigate('library')};
   $('#closeModal').onclick=closeModal;$('#cancelModal').onclick=closeModal;$('#bookModal').addEventListener('click',e=>{if(e.target===$('#bookModal'))closeModal()});$('#bookForm').addEventListener('submit',handleBookForm);$('#coverFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{coverData=await compressImage(file);$('#coverPreview').innerHTML=`<img src="${coverData}" alt="Prévia da capa">`}catch(err){toast(err.message)}});
@@ -254,7 +387,7 @@
   $$('.side-tab').forEach(t=>t.addEventListener('click',()=>{saveCurrentChapter(false);activePanel=t.dataset.panel;renderSidePanel()}));
   $('#chapterTitle').addEventListener('input',()=>{const c=currentChapter();if(c)c.title=$('#chapterTitle').value;$('#chapterKicker').textContent='CAPÍTULO '+toRoman((currentBook()?.chapters.findIndex(x=>x.id===activeChapterId)||0)+1);renderSidePanel();queueSave()});
   $('#manuscript').addEventListener('input',()=>{updateWordCount();queueSave()});$('#fontSelect').addEventListener('change',()=>{$('#manuscript').style.fontFamily=$('#fontSelect').value+', Georgia, serif';queueSave()});$('#fontSize').addEventListener('change',()=>{$('#manuscript').style.fontSize=$('#fontSize').value+'px';queueSave()});
-  $$('[data-command]').forEach(btn=>btn.addEventListener('click',()=>{document.execCommand(btn.dataset.command,false,null);$('#manuscript').focus();btn.classList.toggle('active');queueSave()}));$('#insertQuote').onclick=()=>insertAtCursor('<blockquote>Escreva sua citação aqui.</blockquote><p></p>');$('#insertPageBreak').onclick=()=>insertAtCursor('<div class="page-break"></div><p></p>');$('#exportBtn').onclick=exportBook;
+  $$('[data-command]').forEach(btn=>btn.addEventListener('click',()=>{document.execCommand(btn.dataset.command,false,null);$('#manuscript').focus();btn.classList.toggle('active');queueSave()}));$('#insertQuote').onclick=()=>insertAtCursor('<blockquote>Escreva sua citação aqui.</blockquote><p></p>');$('#prevPage').onclick=()=>navigatePage(-1);$('#nextPage').onclick=()=>navigatePage(1);$('#addPageBtn').onclick=addPage;$('#exportBtn').onclick=exportBook;
   $('#saveGoal').onclick=()=>{dailyGoal=Math.max(1,Math.min(100000,Number($('#goalInput').value)||500));savePrefs();updateGoals();toast('Meta diária atualizada.')};
   // Keep today's word count incremental while writing. Refresh on project switch/reload.
   let lastActiveWords=0;$('#manuscript').addEventListener('focus',()=>{lastActiveWords=(plainText($('#manuscript').innerHTML).match(/\b[\p{L}\p{N}'’-]+\b/gu)||[]).length});$('#manuscript').addEventListener('blur',()=>{const words=(plainText($('#manuscript').innerHTML).match(/\b[\p{L}\p{N}'’-]+\b/gu)||[]).length;const delta=Math.max(0,words-lastActiveWords);if(delta){todaySessions+=delta;savePrefs();updateGoals()}lastActiveWords=words});
