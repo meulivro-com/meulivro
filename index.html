@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#f4eee5" />
-<title>Meu Livro 1.1.3 — Seu espaço para escrever</title>
+<title>Meu Livro 1.1.4 — Seu espaço para escrever</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -172,6 +172,17 @@
 .export-menu small{font-size:9px;color:#a18e79}
 @media(max-width:620px){.export-menu{right:0;min-width:205px}.editor-right{gap:6px}}
 
+
+/* Meu Livro 1.1.4 — atalhos de parágrafo e diálogo */
+.tool-btn.text-tool{
+  width:32px;height:30px;padding:0;border:1px solid transparent;border-radius:7px;
+  display:inline-flex;align-items:center;justify-content:center;
+  color:#765b40;font-family:Georgia,serif;font-size:20px;line-height:1;font-weight:600;
+}
+.tool-btn.text-tool.dash-tool{font-size:21px;font-weight:500;padding-bottom:3px}
+.tool-btn.text-tool:hover,.tool-btn.text-tool:focus-visible{background:#eee5d9;border-color:#e6dac9;color:#604831}
+@media(max-width:620px){.tool-btn.text-tool{width:30px;height:29px}}
+
 </style>
 </head>
 <body>
@@ -241,6 +252,8 @@
             <button class="tool-btn" data-command="justifyLeft" title="Alinhar à esquerda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></svg></button>
             <button class="tool-btn" data-command="justifyCenter" title="Centralizar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16M7 10h10M4 14h16M7 18h10"/></svg></button>
             <button class="tool-btn" id="insertQuote" title="Inserir citação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11H5.5A2.5 2.5 0 0 1 3 8.5v-1A2.5 2.5 0 0 1 5.5 5H10v7a6 6 0 0 1-6 6M21 11h-3.5A2.5 2.5 0 0 1 15 8.5v-1A2.5 2.5 0 0 1 17.5 5H22v7a6 6 0 0 1-6 6"/></svg></button>
+            <button class="tool-btn text-tool" id="insertParagraphSpace" type="button" title="Inserir espaço de parágrafo" aria-label="Inserir espaço de parágrafo">¶</button>
+            <button class="tool-btn text-tool dash-tool" id="insertSpeechDash" type="button" title="Inserir travessão de fala" aria-label="Inserir travessão de fala">—</button>
           </div>
           <div class="editor-right"><div class="save-indicator" id="editorSave"><span class="save-dot"></span><span>Salvo</span></div><div class="export-control"><button class="btn btn-secondary" id="exportBtn" type="button" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3"/></svg>Exportar <svg class="export-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/></svg></button><div class="export-menu" id="exportMenu" hidden><button type="button" id="exportPdfBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l5 5v13H7zM14 3v5h5M9 15h8M9 18h5"/></svg><span><strong>Salvar em PDF</strong><small>Pronto para imprimir</small></span></button><button type="button" id="exportEpubBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21zM4 5.5v13A2.5 2.5 0 0 1 6.5 16H20"/></svg><span><strong>Exportar EPUB</strong><small>Para leitores digitais</small></span></button></div></div></div>
         </div>
@@ -467,7 +480,44 @@
   }
   function addCharacter(){const name=prompt('Nome do personagem:');if(!name?.trim())return;const description=prompt('Personalidade, aparência ou história (opcional):')||'';const b=currentBook();b.characters=b.characters||[];b.characters.push({id:uid(),name:name.trim(),description});b.updatedAt=Date.now();persist();renderSidePanel();toast('Personagem adicionado.')}
   function addNote(){const title=prompt('Título da anotação:')||'Nova ideia';const text=prompt('Escreva sua anotação:');if(text===null)return;const b=currentBook();b.notes=b.notes||[];b.notes.unshift({id:uid(),title:title.trim(),text:text.trim()});b.updatedAt=Date.now();persist();renderSidePanel();toast('Anotação guardada.')}
-  function insertAtCursor(html){$('#manuscript').focus();document.execCommand('insertHTML',false,html);queueSave();updateWordCount()}
+  let savedManuscriptRange=null;
+  function rememberManuscriptSelection(){
+    const editor=$('#manuscript'),selection=window.getSelection();
+    if(selection&&selection.rangeCount&&editor.contains(selection.anchorNode)&&editor.contains(selection.focusNode)){
+      savedManuscriptRange=selection.getRangeAt(0).cloneRange();
+    }
+  }
+  function focusManuscriptAtSavedRange(){
+    const editor=$('#manuscript');editor.focus();
+    const selection=window.getSelection();
+    if(savedManuscriptRange&&editor.contains(savedManuscriptRange.commonAncestorContainer)){
+      selection.removeAllRanges();selection.addRange(savedManuscriptRange);
+    }else if(!editor.contains(selection.anchorNode)){
+      const range=document.createRange();range.selectNodeContents(editor);range.collapse(false);
+      selection.removeAllRanges();selection.addRange(range);
+    }
+  }
+  function insertAtCursor(html){focusManuscriptAtSavedRange();document.execCommand('insertHTML',false,html);rememberManuscriptSelection();queueSave();updateWordCount()}
+  function insertParagraphSpace(){
+    focusManuscriptAtSavedRange();
+    const editor=$('#manuscript'),before=editor.innerHTML;
+    const inserted=document.execCommand('insertHTML',false,'<p><br></p>');
+    if(!inserted||editor.innerHTML===before){
+      const selection=window.getSelection();
+      if(selection&&selection.rangeCount){
+        const range=selection.getRangeAt(0),paragraph=document.createElement('p');
+        paragraph.append(document.createElement('br'));range.deleteContents();range.insertNode(paragraph);
+        range.setStartAfter(paragraph);range.collapse(true);selection.removeAllRanges();selection.addRange(range);
+      }
+    }
+    rememberManuscriptSelection();queueSave();updateWordCount();toast('Espaço de parágrafo inserido.');
+  }
+  function insertSpeechDash(){
+    focusManuscriptAtSavedRange();
+    const inserted=document.execCommand('insertText',false,'— ');
+    if(!inserted){document.execCommand('insertHTML',false,'—&nbsp;')}
+    rememberManuscriptSelection();queueSave();updateWordCount();
+  }
   function escapeXML(value=''){return escapeHTML(String(value));}
   function sanitizeRichText(html=''){
     const container=document.createElement('div');container.innerHTML=html||'';
@@ -605,7 +655,11 @@
   $$('.side-tab').forEach(t=>t.addEventListener('click',()=>{saveCurrentChapter(false);activePanel=t.dataset.panel;renderSidePanel()}));
   $('#chapterTitle').addEventListener('input',()=>{const c=currentChapter();if(c)c.title=$('#chapterTitle').value;$('#chapterKicker').textContent='CAPÍTULO '+toRoman((currentBook()?.chapters.findIndex(x=>x.id===activeChapterId)||0)+1);renderSidePanel();queueSave()});
   $('#manuscript').addEventListener('input',()=>{updateWordCount();queueSave()});$('#fontSelect').addEventListener('change',()=>{$('#manuscript').style.fontFamily=$('#fontSelect').value+', Georgia, serif';queueSave()});$('#fontSize').addEventListener('change',()=>{$('#manuscript').style.fontSize=$('#fontSize').value+'px';queueSave()});
-  $$('[data-command]').forEach(btn=>btn.addEventListener('click',()=>{document.execCommand(btn.dataset.command,false,null);$('#manuscript').focus();btn.classList.toggle('active');queueSave()}));$('#insertQuote').onclick=()=>insertAtCursor('<blockquote>Escreva sua citação aqui.</blockquote><p></p>');$('#prevPage').onclick=()=>navigatePage(-1);$('#nextPage').onclick=()=>navigatePage(1);$('#addPageBtn').onclick=addPage;
+  $('#manuscript').addEventListener('keyup',rememberManuscriptSelection);$('#manuscript').addEventListener('mouseup',rememberManuscriptSelection);$('#manuscript').addEventListener('focus',rememberManuscriptSelection);document.addEventListener('selectionchange',rememberManuscriptSelection);
+  $$('[data-command]').forEach(btn=>btn.addEventListener('click',()=>{focusManuscriptAtSavedRange();document.execCommand(btn.dataset.command,false,null);rememberManuscriptSelection();btn.classList.toggle('active');queueSave()}));
+  $('#insertQuote').addEventListener('mousedown',e=>e.preventDefault());$('#insertParagraphSpace').addEventListener('mousedown',e=>e.preventDefault());$('#insertSpeechDash').addEventListener('mousedown',e=>e.preventDefault());
+  $('#insertQuote').onclick=()=>insertAtCursor('<blockquote>Escreva sua citação aqui.</blockquote><p></p>');$('#insertParagraphSpace').onclick=insertParagraphSpace;$('#insertSpeechDash').onclick=insertSpeechDash;
+  $('#prevPage').onclick=()=>navigatePage(-1);$('#nextPage').onclick=()=>navigatePage(1);$('#addPageBtn').onclick=addPage;
   const exportControl=$('.export-control'),exportMenu=$('#exportMenu');
   function closeExportMenu(){exportMenu.hidden=true;exportControl.classList.remove('open');$('#exportBtn').setAttribute('aria-expanded','false')}
   $('#exportBtn').onclick=e=>{e.stopPropagation();const opening=exportMenu.hidden;exportMenu.hidden=!opening;exportControl.classList.toggle('open',opening);$('#exportBtn').setAttribute('aria-expanded',String(opening))};
