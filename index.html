@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#f4eee5" />
-<title>Meu Livro 1.1.4 — Seu espaço para escrever</title>
+<title>Meu Livro 1.2 — Seu espaço para escrever</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -173,7 +173,7 @@
 @media(max-width:620px){.export-menu{right:0;min-width:205px}.editor-right{gap:6px}}
 
 
-/* Meu Livro 1.1.4 — atalhos de parágrafo e diálogo */
+/* Meu Livro — atalhos de parágrafo e diálogo */
 .tool-btn.text-tool{
   width:32px;height:30px;padding:0;border:1px solid transparent;border-radius:7px;
   display:inline-flex;align-items:center;justify-content:center;
@@ -255,7 +255,7 @@
             <button class="tool-btn text-tool" id="insertParagraphSpace" type="button" title="Inserir espaço de parágrafo" aria-label="Inserir espaço de parágrafo">¶</button>
             <button class="tool-btn text-tool dash-tool" id="insertSpeechDash" type="button" title="Inserir travessão de fala" aria-label="Inserir travessão de fala">—</button>
           </div>
-          <div class="editor-right"><div class="save-indicator" id="editorSave"><span class="save-dot"></span><span>Salvo</span></div><div class="export-control"><button class="btn btn-secondary" id="exportBtn" type="button" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3"/></svg>Exportar <svg class="export-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/></svg></button><div class="export-menu" id="exportMenu" hidden><button type="button" id="exportPdfBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l5 5v13H7zM14 3v5h5M9 15h8M9 18h5"/></svg><span><strong>Salvar em PDF</strong><small>Pronto para imprimir</small></span></button><button type="button" id="exportEpubBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21zM4 5.5v13A2.5 2.5 0 0 1 6.5 16H20"/></svg><span><strong>Exportar EPUB</strong><small>Para leitores digitais</small></span></button></div></div></div>
+          <div class="editor-right"><div class="save-indicator" id="editorSave"><span class="save-dot"></span><span>Salvo</span></div><div class="export-control"><button class="btn btn-secondary" id="exportBtn" type="button" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v3h14v-3"/></svg>Exportar <svg class="export-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/></svg></button><div class="export-menu" id="exportMenu" hidden><button type="button" id="exportPdfBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l5 5v13H7zM14 3v5h5M9 15h8M9 18h5"/></svg><span><strong>Salvar em PDF</strong><small>Paginação automática</small></span></button><button type="button" id="exportEpubBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21zM4 5.5v13A2.5 2.5 0 0 1 6.5 16H20"/></svg><span><strong>Exportar EPUB</strong><small>Para leitores digitais</small></span></button></div></div></div>
         </div>
         <div class="editor-layout">
           <aside class="editor-sidebar">
@@ -550,37 +550,118 @@
     clearTimeout(saveTimer);syncCurrentChapter();b.updatedAt=Date.now();persist();
     ensureBookPages(b);return b;
   }
-  function buildPrintDocument(b){
-    let pageNo=0;
-    const printPages=[];
-    const cover=(typeof b.cover==='string'&&b.cover.startsWith('data:image/'))?`<img class="cover-image" src="${b.cover}" alt="Capa de ${escapeHTML(b.title||'Livro')}">`:'';
-    printPages.push(`<section class="print-page title-page"><div class="title-page-inner">${cover}<div class="title-rule"></div><h1>${escapeHTML(b.title||'Sem título')}</h1>${b.author?`<p class="book-author">${escapeHTML(b.author)}</p>`:''}</div><footer class="print-footer">MEU LIVRO</footer></section>`);
-    (b.chapters||[]).forEach((chapter,chapterIndex)=>{
-      const pages=ensureChapterPages(chapter);
-      pages.forEach((page,pageIndex)=>{
-        pageNo++;
-        const chapterHeading=pageIndex===0?`<header class="chapter-heading"><span>CAPÍTULO ${toRoman(chapterIndex+1)}</span>${chapter.title?`<h2>${escapeHTML(chapter.title)}</h2>`:''}</header>`:'';
-        const body=sanitizeRichText(page.content||'');
-        printPages.push(`<section class="print-page"><div class="running-head">${escapeHTML(b.title||'Meu Livro')}</div>${chapterHeading}<main class="print-body">${body}</main><footer class="print-footer"><span>${pageNo}</span></footer></section>`);
-      });
-    });
-    return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHTML(b.title||'Meu Livro')}</title><style>
-      @page{size:A4;margin:0}*{box-sizing:border-box}html,body{margin:0;padding:0;background:#eee9e1;color:#493a2d;font-family:Georgia,'Times New Roman',serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-      .print-page{position:relative;width:210mm;height:297mm;margin:12px auto;background:#fbf6ec;padding:25mm 25mm 23mm;overflow:hidden;break-after:page;page-break-after:always;box-shadow:0 3px 18px #4c38251c}
-      .title-page{display:flex;align-items:center;justify-content:center;text-align:center;padding:25mm}.title-page-inner{width:100%;display:flex;align-items:center;flex-direction:column}.cover-image{display:block;max-width:92mm;max-height:125mm;object-fit:contain;margin:0 auto 17mm;box-shadow:0 7px 22px #4c382522}.title-rule{width:32mm;height:1px;background:#bca88d;margin:0 auto 12mm}.title-page h1{font-size:27pt;font-weight:normal;line-height:1.15;margin:0 0 6mm;max-width:145mm}.book-author{font-size:11pt;color:#8b765f;margin:0}.running-head{position:absolute;top:13mm;left:25mm;right:25mm;text-align:right;text-transform:uppercase;letter-spacing:1.4px;font-size:7pt;color:#aa967d;border-bottom:1px solid #dfd2bf;padding-bottom:4mm}
-      .chapter-heading{text-align:center;margin:26mm 0 15mm}.chapter-heading span{font:7pt Arial,sans-serif;letter-spacing:2.5px;color:#a78f72}.chapter-heading h2{font-size:22pt;font-weight:normal;margin:6mm 0 0;line-height:1.15;color:#5b4633}.print-body{font-size:11.5pt;line-height:1.75;overflow:hidden;max-height:225mm}.print-body p{margin:0 0 .7em;text-indent:2em}.print-body p:first-child{text-indent:0}.print-body h2,.print-body h3{text-align:center;font-weight:normal;margin:1.5em 0 .8em}.print-body blockquote{margin:1.3em 2em;color:#76634f;border-left:1px solid #b79b78;padding-left:13px;font-style:italic}.print-body ul,.print-body ol{padding-left:1.7em}.print-footer{position:absolute;bottom:12mm;left:25mm;right:25mm;text-align:center;border-top:1px solid #dfd2bf;padding-top:4mm;font:8pt Georgia,serif;color:#a58f75}.title-page .print-footer{border:0}
-      @media screen{.print-page:last-child{margin-bottom:30px}}@media print{html,body{background:#fff}.print-page{margin:0;box-shadow:none}.print-page:last-child{break-after:auto;page-break-after:auto}}
-      </style></head><body>${printPages.join('')}</body></html>`;
+  function collectChapterHtmlForPrint(chapter){
+    const pages=ensureChapterPages(chapter);
+    const source=pages.map(page=>page.content||'').join('\n');
+    const holder=document.createElement('div');
+    holder.innerHTML=source;
+    // Quebras do editor são apenas divisões de trabalho: no PDF o texto deve fluir.
+    holder.querySelectorAll('.page-break,[data-manual-page-break]').forEach(el=>el.remove());
+    return sanitizeRichText(holder.innerHTML);
   }
-  function exportPdf(){
+  function cssContentString(value){
+    return JSON.stringify(String(value||'Meu Livro'))
+      .replace(/</g,'\\3c ').replace(/>/g,'\\3e ').replace(/&/g,'\\26 ');
+  }
+  function buildPrintDocument(b){
+    const cover=(typeof b.cover==='string'&&b.cover.startsWith('data:image/'))
+      ?`<img class="cover-image" src="${b.cover}" alt="Capa de ${escapeHTML(b.title||'Livro')}">`:'';
+    const chapters=(b.chapters||[]).map((chapter,chapterIndex)=>{
+      const body=collectChapterHtmlForPrint(chapter);
+      const heading=`<header class="chapter-heading"><span>CAPÍTULO ${toRoman(chapterIndex+1)}</span>${chapter.title?`<h1>${escapeHTML(chapter.title)}</h1>`:''}</header>`;
+      return `<section class="chapter-section${chapterIndex>0?' next-chapter':''}">${heading}<main class="print-body">${body||'<p></p>'}</main></section>`;
+    }).join('');
+    const cssTitle=cssContentString(b.title||'Meu Livro');
+    return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHTML(b.title||'Meu Livro')}</title><style>
+      @page{
+        size:A4;
+        margin:25mm 25mm 23mm;
+        background:#fbf6ec;
+        @top-right{
+          content:${cssTitle};
+          border-bottom:1px solid #dfd2bf;
+          padding-bottom:4mm;
+          color:#aa967d;
+          font:7pt Georgia,'Times New Roman',serif;
+          letter-spacing:1.4px;
+          text-transform:uppercase;
+        }
+        @bottom-center{
+          content:counter(page);
+          border-top:1px solid #dfd2bf;
+          padding-top:4mm;
+          color:#a58f75;
+          font:8pt Georgia,'Times New Roman',serif;
+        }
+      }
+      @page:first{
+        margin:0;
+        counter-increment:page 0;
+        @top-right{content:none}
+        @bottom-center{content:none}
+      }
+      *{box-sizing:border-box}
+      html,body{margin:0;padding:0;background:#fbf6ec;color:#493a2d;font-family:Georgia,'Times New Roman',serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .title-page{
+        width:210mm;height:297mm;padding:25mm;position:relative;
+        display:flex;align-items:center;justify-content:center;text-align:center;
+        background:#fbf6ec;box-sizing:border-box;
+      }
+      .title-page-inner{width:100%;display:flex;align-items:center;flex-direction:column}
+      .cover-image{display:block;max-width:92mm;max-height:125mm;object-fit:contain;margin:0 auto 17mm;box-shadow:0 7px 22px #4c382522}
+      .title-rule{width:32mm;height:1px;background:#bca88d;margin:0 auto 12mm}
+      .title-page h1{font-size:27pt;font-weight:normal;line-height:1.15;margin:0 0 6mm;max-width:145mm}
+      .book-author{font-size:11pt;color:#8b765f;margin:0}
+      .title-footer{position:absolute;bottom:14mm;left:0;right:0;text-align:center;font:7pt Georgia,serif;color:#a58f75;letter-spacing:1px}
+      .chapter-section{display:block;max-width:100%;break-before:auto;page-break-before:auto;}
+      .chapter-section.next-chapter{break-before:page;page-break-before:always}
+      .chapter-heading{text-align:center;margin:12mm 0 12mm;break-after:avoid;page-break-after:avoid}
+      .chapter-heading span{font:7pt Arial,sans-serif;letter-spacing:2.5px;color:#a78f72}
+      .chapter-heading h1{font-size:22pt;font-weight:normal;margin:6mm 0 0;line-height:1.15;color:#5b4633}
+      .print-body{font-size:11.5pt;line-height:1.7;overflow:visible;max-height:none;height:auto}
+      .print-body p{margin:0 0 .75em;text-indent:2em;orphans:3;widows:3;break-inside:avoid;page-break-inside:avoid}
+      .print-body p:first-child{text-indent:0}
+      .print-body h2,.print-body h3{text-align:center;font-weight:normal;margin:1.5em 0 .8em;break-after:avoid;page-break-after:avoid}
+      .print-body blockquote{margin:1.3em 2em;color:#76634f;border-left:1px solid #b79b78;padding-left:13px;font-style:italic;orphans:3;widows:3;break-inside:avoid;page-break-inside:avoid}
+      .print-body ul,.print-body ol{padding-left:1.7em}
+      .print-body li{orphans:2;widows:2}
+      .print-body img{max-width:100%;height:auto}
+      .print-body hr{border:0;border-top:1px solid #d9cbb8;margin:1.5em 0}
+      @media screen{
+        html,body{background:#eee9e1}
+        .title-page,.chapter-section{margin:12px auto;background:#fbf6ec;box-shadow:0 3px 18px #4c38251c}
+        .chapter-section{width:160mm;max-width:calc(100% - 24px);padding:25mm;}
+        .chapter-section.next-chapter{margin-top:24px}
+      }
+      @media print{
+        html,body{background:#fbf6ec}
+        .title-page,.chapter-section{margin:0;box-shadow:none}
+        .chapter-section{width:auto;max-width:none;padding:0}
+      }
+      </style></head><body>
+      <section class="title-page"><div class="title-page-inner">${cover}<div class="title-rule"></div><h1>${escapeHTML(b.title||'Sem título')}</h1>${b.author?`<p class="book-author">${escapeHTML(b.author)}</p>`:''}</div><footer class="title-footer">MEU LIVRO</footer></section>
+      ${chapters}
+      </body></html>`;
+  }
+  async function exportPdf(){
     const b=prepareBookForExport();if(!b)return;
     const printWindow=window.open('','_blank');
     if(!printWindow){toast('Permita janelas pop-up para gerar o PDF.');return;}
-    printWindow.document.open();printWindow.document.write(buildPrintDocument(b));printWindow.document.close();
-    toast('Na tela de impressão, escolha “Salvar como PDF”.');
-    setTimeout(()=>{try{printWindow.focus();printWindow.print()}catch(err){toast('Não foi possível abrir a impressão neste navegador.')}} ,650);
+    printWindow.document.open();
+    printWindow.document.write(buildPrintDocument(b));
+    printWindow.document.close();
+    toast('Documento diagramado. Na impressão, escolha “Salvar como PDF”.');
+    const waitForAssets=async()=>{
+      try{
+        if(printWindow.document.fonts?.ready)await printWindow.document.fonts.ready;
+        const images=[...printWindow.document.images];
+        await Promise.all(images.map(img=>img.complete?Promise.resolve():new Promise(resolve=>{img.onload=resolve;img.onerror=resolve})));
+      }catch(err){console.warn('Não foi possível aguardar todos os recursos da capa.',err)}
+    };
+    await waitForAssets();
+    setTimeout(()=>{try{printWindow.focus();printWindow.print()}catch(err){console.error(err);toast('Não foi possível abrir a impressão neste navegador.')}},250);
   }
-  function dataUrlToImage(dataUrl){
+    function dataUrlToImage(dataUrl){
     const match=/^data:(image\/(?:jpeg|png|gif));base64,([\s\S]+)$/i.exec(dataUrl||'');
     if(!match)return null;
     const binary=atob(match[2]),bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
